@@ -1,5 +1,4 @@
 import sys
-import codecs
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Hash import SHA256
 from Cryptodome.Signature import PKCS1_v1_5
@@ -7,8 +6,9 @@ from Cryptodome.Signature import PKCS1_v1_5
 
 def usage():
     print("Usage: \n"
-          "logsigner -s  <priv-key> <data> <signature-file> \n"
-          "logsigner -v  <pub-key> <data> <signature-file> \n")
+          "digi-sig -s  <priv-key> <data> <signature-file> \n"
+          "digi-sig -v  <PUB-key> <data> <signature-file> \n")
+
 
 if (len(sys.argv) < 5):
     usage()
@@ -18,6 +18,7 @@ op = sys.argv[1]
 key_f = sys.argv[2]
 data_f = sys.argv[3]
 sig_f = sys.argv[4]
+
 
 def generate_signature(key, data, sig_f):
     print("Generating Signature")
@@ -51,4 +52,3 @@ elif (op == "-v"):
 else:
     # Error
     usage()
-
