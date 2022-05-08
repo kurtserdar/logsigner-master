@@ -16,7 +16,6 @@ if (len(sys.argv) < 3):
     quit()
 
 
-
 op = sys.argv[1]
 data_f = sys.argv[2]
 
@@ -26,7 +25,7 @@ def generate_signature(key, data):
     rsa = RSA.importKey(key)
     signer = PKCS1_v1_5.new(rsa)
     signature = signer.sign(h)
-    with open(data_f + "signed", 'wb') as f: f.write(signature)
+    with open(data_f + ".signed", 'wb') as f: f.write(signature)
 
 
 def verify_signature(key, data):
@@ -44,8 +43,8 @@ verifyCertExists = os.path.isfile('verify.pem')
 # print(signCertExists)
 # print(verifyCertExists)
 
-# check pem files are exists if not create them
-if (verifyCertExists!= True) or (signCertExists != True):
+# Check pem files are exists if not, create them
+if (verifyCertExists!= True) and (signCertExists != True):
     key = RSA.generate(1024)
     privKeyString = key.export_key()
 
