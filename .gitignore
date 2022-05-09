@@ -1,3 +1,7 @@
 .DS_Store
 sign.pem
 verify.pem
+a.log
+b.log
+a.log.signed
+b.log.signed

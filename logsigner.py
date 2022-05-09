@@ -18,14 +18,11 @@ if (len(sys.argv) < 3):
 
 
 op = sys.argv[1]
-
-data_f = sys.argv[2]
-print(data_f)
-
-
+logFiles = sys.argv[2:]
 
 
 def generate_signature(key, data):
+    #zipping
     print("Generating Signature")
     h = SHA256.new(data)
     rsa = RSA.importKey(key)
@@ -37,6 +34,7 @@ def generate_signature(key, data):
 
 
 def verify_signature(key, data):
+    #unzipping
     print("Verifying Signature")
     h = SHA256.new(data)
     rsa = RSA.importKey(key)
@@ -47,9 +45,6 @@ def verify_signature(key, data):
 
 signCertExists = os.path.isfile('sign.pem')
 verifyCertExists = os.path.isfile('verify.pem')
-
-# print(signCertExists)
-# print(verifyCertExists)
 
 
 # Check pem files are exists if not, create them
@@ -65,19 +60,19 @@ if (verifyCertExists!= True) and (signCertExists != True):
             print("{}".format(pubKeyString.decode()), file=pubFile)
 
 
-#os.chdir(".")
-for data_f in glob.glob("*.log"):
+for data_p in logFiles:
+    for data_f in glob.glob(data_p):
 
-# Read all file contents
-    with open("sign.pem", 'rb') as f: key = f.read()
-    with open(data_f, 'rb') as f: data = f.read()
+    # Read all file contents
+        with open("sign.pem", 'rb') as f: key = f.read()
+        with open(data_f, 'rb') as f: data = f.read()
 
-    if (op == "-s"):
-        # Generate Signature
-        generate_signature(key, data)
-    elif (op == "-v"):
-        # Verify Signature
-        verify_signature(key, data)
-    else:
-        # Error
-        usage()
+        if (op == "-s"):
+            # Generate Signature
+            generate_signature(key, data)
+        elif (op == "-v"):
+            # Verify Signature
+            verify_signature(key, data)
+        else:
+            # Error
+            usage()
