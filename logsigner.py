@@ -48,7 +48,7 @@ verifyCertExists = os.path.isfile('verify.pem')
 
 
 # Check pem files are exists if not, create them
-if (verifyCertExists!= True) and (signCertExists != True):
+if (verifyCertExists!= True) or (signCertExists != True):
     key = RSA.generate(1024)
     privKeyString = key.export_key()
 
