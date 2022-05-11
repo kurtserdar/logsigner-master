@@ -83,7 +83,6 @@ for data_p in logFiles:
             usage()
 
 # Files are sent to signed folder
-
 if (os.path.exists("signed") != True) and (op == "-s"):
     print("Log files and sign files are copying to Signed folder...")
     os.mkdir("signed")
