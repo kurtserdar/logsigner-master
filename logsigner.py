@@ -1,6 +1,10 @@
+from shutil import copyfile
 import sys
 import os.path
 import glob, os
+import shutil
+from datetime import date
+from datetime import timedelta
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Hash import SHA256
 from Cryptodome.Signature import PKCS1_v1_5
@@ -22,22 +26,29 @@ logFiles = sys.argv[2:]
 
 
 def generate_signature(key, data):
-    #zipping
+    today = date.today()
+    yesterday = str(today - timedelta(days = 1))
+    os.rename(data_f,yesterday + "_" + data_f)
+
+
     print("Generating Signature")
     h = SHA256.new(data)
     rsa = RSA.importKey(key)
     signer = PKCS1_v1_5.new(rsa)
     signature = signer.sign(h)
-    with open(data_f + ".signed", 'wb') as f: f.write(signature)
+    with open(yesterday + "_" + data_f + ".signed", 'wb') as f: f.write(signature)
     print(data_f + " has been signed")
-    print("Done")
-
+   
 
 def verify_signature(key, data):
-    #unzipping
+  
+    today = date.today()
+    yesterday = str(today - timedelta(days = 1))
+    #os.rename(data_f,yesterday + "_" + data_f)
+
     print("Verifying Signature")
-    h = SHA256.new(data)
-    rsa = RSA.importKey(key)
+    h = SHA256.new(data) # datanın hashini alıyor
+    rsa = RSA.importKey(key) # sign.pem dosyası import ediliyor (rsa)
     signer = PKCS1_v1_5.new(rsa)
     with open(data_f + ".signed", 'rb') as f: signature = f.read()
     rsp = data_f + " has been successfully verified" if (signer.verify(h, signature)) else data_f + " Verification Failure"
@@ -62,7 +73,6 @@ if (verifyCertExists!= True) or (signCertExists != True):
 
 for data_p in logFiles:
     for data_f in glob.glob(data_p):
-
     # Read all file contents
         with open("sign.pem", 'rb') as f: key = f.read()
         with open(data_f, 'rb') as f: data = f.read()
@@ -76,3 +86,24 @@ for data_p in logFiles:
         else:
             # Error
             usage()
+
+# move log files to signed folder
+print("Log files and sign files are copying to Signed folder...")
+if (os.path.exists("signed") != True):
+    os.mkdir("signed")
+    sourcepath='.'
+    sourcefiles = os.listdir(sourcepath)
+    destinationpath = 'signed'
+    for file in sourcefiles:
+        if file.endswith('.log') or file.endswith('.signed') or file.endswith('.bz2'):
+            shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
+    print("Done")
+
+else:
+    sourcepath='.'
+    sourcefiles = os.listdir(sourcepath)
+    destinationpath = 'signed'
+    for file in sourcefiles:
+        if file.endswith('.log') or file.endswith('.signed') or file.endswith('.bz2'):
+            shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
+    print("Done")
