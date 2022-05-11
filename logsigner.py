@@ -90,7 +90,7 @@ if (os.path.exists("signed") != True) and (op == "-s"):
     sourcefiles = os.listdir(sourcepath)
     destinationpath = 'signed'
     for file in sourcefiles:
-        if file.endswith('.log') or file.endswith('.signed') or file.endswith('.bz2'):
+        if file.endswith('.signed') or file.endswith('.bz2'):
             shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
     print("Done")
 
@@ -100,7 +100,7 @@ elif (os.path.exists("signed") == True) and (op == "-s"):
     sourcefiles = os.listdir(sourcepath)
     destinationpath = 'signed'
     for file in sourcefiles:
-        if file.endswith('.log') or file.endswith('.signed') or file.endswith('.bz2'):
+        if file.endswith('.signed') or file.endswith('.bz2'):
             shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
     print("Done")
 
