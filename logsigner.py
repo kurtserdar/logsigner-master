@@ -41,14 +41,9 @@ def generate_signature(key, data):
    
 
 def verify_signature(key, data):
-  
-    today = date.today()
-    yesterday = str(today - timedelta(days = 1))
-    #os.rename(data_f,yesterday + "_" + data_f)
-
     print("Verifying Signature")
-    h = SHA256.new(data) # datanın hashini alıyor
-    rsa = RSA.importKey(key) # sign.pem dosyası import ediliyor (rsa)
+    h = SHA256.new(data)
+    rsa = RSA.importKey(key)
     signer = PKCS1_v1_5.new(rsa)
     with open(data_f + ".signed", 'rb') as f: signature = f.read()
     rsp = data_f + " has been successfully verified" if (signer.verify(h, signature)) else data_f + " Verification Failure"
@@ -87,9 +82,10 @@ for data_p in logFiles:
             # Error
             usage()
 
-# move log files to signed folder
-print("Log files and sign files are copying to Signed folder...")
-if (os.path.exists("signed") != True):
+# Files are sent to signed folder
+
+if (os.path.exists("signed") != True) and (op == "-s"):
+    print("Log files and sign files are copying to Signed folder...")
     os.mkdir("signed")
     sourcepath='.'
     sourcefiles = os.listdir(sourcepath)
@@ -99,11 +95,15 @@ if (os.path.exists("signed") != True):
             shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
     print("Done")
 
-else:
+elif (os.path.exists("signed") == True) and (op == "-s"):
+    print("Log files and sign files are copying to Signed folder...")
     sourcepath='.'
     sourcefiles = os.listdir(sourcepath)
     destinationpath = 'signed'
     for file in sourcefiles:
         if file.endswith('.log') or file.endswith('.signed') or file.endswith('.bz2'):
             shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
+    print("Done")
+
+else:
     print("Done")
