@@ -1,4 +1,4 @@
-# logsigner-master
+# logsigner
 5651 sayılı yasa gereğince toplanmış olan logları imzalar. 
 
 Aşağıdaki adımlar pfSense üzerinde yapılmıştır. Tüm Unix/Linux OS'larda İlgili bağımlılık ve python paketi bulunuyorsa imzalama ve doğrulama fonksiyonları çalışır.
