@@ -32,6 +32,6 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
 
 ## Ekran Görüntüleri
 
-![alt text](https://github.com/kurtserdar/logsigner-master/blob/main/1.jpg?raw=true)
+![alt text](https://github.com/kurtserdar/logsigner-master/blob/main/1.png?raw=true)
 
 
