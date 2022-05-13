@@ -17,7 +17,7 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
 
 ## Kullanım
 
- logsigner -s  <data>
+ logsigner -s  \<data>
   
  logsigner -v  signed/<data>
 
