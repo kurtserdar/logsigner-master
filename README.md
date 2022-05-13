@@ -30,5 +30,8 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
   
  python3.8 logsigner.py -v signed/\*.bz2 (coklu log dosyası doğrulama)
 
+## Ekran Görüntüleri
+
+![alt text](https://github.com/kurtserdar/logsigner-master/blob/main/1.jpg?raw=true)
 
 
