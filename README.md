@@ -15,6 +15,7 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
  
   - pkg install py38-pycryptodomex-3.12.0
   - logsigner.py dosyasının /var/log/ dizini altına kopyalanması (ya da hangi dizinde log imzalanacaksa)
+  - sistem zamanının doğru olup olmadığı kontrol edilmelidir. (date)
 
 ## Kullanım
 
