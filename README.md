@@ -49,4 +49,4 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
 ![alt text](https://github.com/kurtserdar/logsigner-master/blob/main/5.png?raw=true)
 
 
-Öneri ve sorunlarınız için: serdar.kurt@outlook.com
+Öneri ve sorunlarınız için: https://www.serdarkurt.com.tr/pfsense-loglarinin-imzalanmasi/
