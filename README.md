@@ -34,7 +34,7 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
  
  Sign işlemini her gün otomatik olarak gerçekleştirmek için cron kullanabilirsiniz.
  
- ### Not: cron işlemini gece 00:00'dan sonra çalıştırmalısınız. O güne ait log dosyası gece 00:00'dan sonra bz olarak kayıt olacak. imza anında logun hangi tarihe ait olduğunu logsigner.py yazacaktır.
+ #### Not: cron işlemini gece 00:00'dan sonra çalıştırmalısınız. O güne ait log dosyası gece 00:00'dan sonra bz olarak kayıt olacak. imza anında logun hangi tarihe ait olduğunu logsigner.py yazacaktır.
 
 ## Ekran Görüntüleri
 
