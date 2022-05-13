@@ -1,7 +1,7 @@
 # logsigner-master
 5651 sayılı yasa gereğince toplanmış olan logları imzalar. 
 
-Aşağıdaki adımlar pfSense üzerinde yapılmıştır. Tüm Unix/Linux OS'larda imzalama ve doğrulama fonksiyonları çalışır.
+Aşağıdaki adımlar pfSense üzerinde yapılmıştır. Tüm Unix/Linux OS'larda İlgili bağımlılık ve python paketi bulunuyorsa imzalama ve doğrulama fonksiyonları çalışır.
 
 logsigner.py hala geliştirme aşamasındadır. 
 
@@ -49,3 +49,4 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
 ![alt text](https://github.com/kurtserdar/logsigner-master/blob/main/5.png?raw=true)
 
 
+Öneri ve sorunlarınız için: serdar.kurt@outlook.com
