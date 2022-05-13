@@ -18,6 +18,7 @@ logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
 ## Kullanım
 
  logsigner -s  <data>
+  
  logsigner -v  signed/<data>
 
  python3.8 logsigner.py -s \dosyaAdi.bz2 (tekli log imzalama)
