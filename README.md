@@ -10,6 +10,7 @@ logsigner.py hala geliştirme aşamasındadır.
 logsigner.py, Python ve Cryptodome kütüphanesine ihtiyaç duyar.
   - /usr/local/etc/pkg/repos/pfSense.conf
   - /usr/local/etc/pkg/repos/FreeBSD.conf
+  
  conf dosyalarında bulunan FreeBSD: { enabled: no } -> FreeBSD: { enabled: yes } olarak değiştirilmelidir.
  
   - pkg install py38-pycryptodomex-3.12.0
