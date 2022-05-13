@@ -36,7 +36,7 @@ def generate_signature(key, data):
     rsa = RSA.importKey(key)
     signer = PKCS1_v1_5.new(rsa)
     signature = signer.sign(h)
-    with open(yesterday + "_" + data_f + ".signed", 'wb') as f: f.write(signature)
+    with open(yesterday + "_" + data_f + ".sign", 'wb') as f: f.write(signature)
     print(data_f + " has been signed")
    
 
@@ -45,7 +45,7 @@ def verify_signature(key, data):
     h = SHA256.new(data)
     rsa = RSA.importKey(key)
     signer = PKCS1_v1_5.new(rsa)
-    with open(data_f + ".signed", 'rb') as f: signature = f.read()
+    with open(data_f + ".sign", 'rb') as f: signature = f.read()
     rsp = data_f + " has been successfully verified" if (signer.verify(h, signature)) else data_f + " Verification Failure"
     print(rsp)
 
@@ -90,7 +90,7 @@ if (os.path.exists("signed") != True) and (op == "-s"):
     sourcefiles = os.listdir(sourcepath)
     destinationpath = 'signed'
     for file in sourcefiles:
-        if file.endswith('.signed') or file.endswith('.bz2'):
+        if file.endswith('.sign') or file.endswith('.bz2'):
             shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
     print("Done")
 
@@ -100,7 +100,7 @@ elif (os.path.exists("signed") == True) and (op == "-s"):
     sourcefiles = os.listdir(sourcepath)
     destinationpath = 'signed'
     for file in sourcefiles:
-        if file.endswith('.signed') or file.endswith('.bz2'):
+        if file.endswith('.sign') or file.endswith('.bz2'):
             shutil.move(os.path.join(sourcepath,file), os.path.join(destinationpath,file))
     print("Done")
 
